@@ -5,23 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KevinsMailOrganizer"
         mc:Ignorable="d"
-        Title="Riksbanken Mail Organizer" Height="614" Width="402" ResizeMode="NoResize" Background="#FFF0F0F0" BorderBrush="#FF3F3F46" Foreground="#FF3F3F46">
+        Title="Riksbanken Mail Organizer" Height="707" Width="1002" ResizeMode="NoResize" Background="#FFF0F0F0" BorderBrush="#FF3F3F46" Foreground="#FF3F3F46">
 
     <Grid Background="#FFF0F0F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="87*"/>
+        </Grid.ColumnDefinitions>
 
-        <Button x:Name="btn_Open" Content="Open" HorizontalAlignment="Left" Margin="0,545,0,0" VerticalAlignment="Top" Width="96" BorderBrush="#FFF0F0F0" Height="30" Background="Gray" Padding="0" Foreground="White" Click="btn_Open_Click" />
+        <Button x:Name="btn_Open" Content="Open" HorizontalAlignment="Left" Margin="180,635,0,0" VerticalAlignment="Top" Width="96" BorderBrush="#FFF0F0F0" Height="30" Background="Gray" Padding="0" Foreground="White" Click="btn_Open_Click" />
 
         <TreeView x:Name="tV_template_box" HorizontalAlignment="Left" Height="516" VerticalAlignment="Top" Width="386" BorderBrush="#FFF0F0F0" HorizontalContentAlignment="Center" Background="#FFF0F0F0" Foreground="#FF1C1C1C" Margin="0,29,0,0"/>
 
-        <Button x:Name="btn_Refresh" Content="Refresh" HorizontalAlignment="Left" Margin="96,545,0,0" VerticalAlignment="Top" Width="96" BorderBrush="#FFF0F0F0" Height="30" Background="Gray" Padding="0" Foreground="White" Click="btn_Refresh_Click" />
-        <Button x:Name="btn_Help" Content="Help" HorizontalAlignment="Left" Margin="192,545,0,0" VerticalAlignment="Top" Width="96" BorderBrush="#FFF0F0F0" Height="30" Background="Gray" Padding="0" Foreground="White" />
-        <Button x:Name="btn_Help_Copy" Content="Exit" HorizontalAlignment="Left" Margin="288,545,0,0" VerticalAlignment="Top" Width="98" BorderBrush="#FFF0F0F0" Height="30" Background="Gray" Padding="0" Foreground="White" Click="btn_Help_Copy_Click" />
-        <DockPanel>
+        <Button x:Name="btn_Refresh" Content="Refresh" HorizontalAlignment="Left" Margin="336,635,0,0" VerticalAlignment="Top" Width="96" BorderBrush="#FFF0F0F0" Height="30" Background="Gray" Padding="0" Foreground="White" Click="btn_Refresh_Click" />
+        <Button x:Name="btn_Help" Content="Help" HorizontalAlignment="Left" Margin="40,635,0,0" VerticalAlignment="Top" Width="96" BorderBrush="#FFF0F0F0" Height="30" Background="Gray" Padding="0" Foreground="White" Grid.Column="1" />
+        <Button x:Name="btn_Help_Copy" Content="Exit" HorizontalAlignment="Left" Margin="212,635,0,0" VerticalAlignment="Top" Width="98" BorderBrush="#FFF0F0F0" Height="30" Background="Gray" Padding="0" Foreground="White" Click="btn_Help_Copy_Click" Grid.Column="1" />
+        <DockPanel Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
                     <MenuItem Header="_Add"/>
                     <MenuItem Header="_Refresh"/>
-                    <MenuItem Header="_Exit"/>
+                    <MenuItem Header="_Exit" Click="MenuItem_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="_Change Company">
+                        <MenuItem Header="_Riksbanken"></MenuItem>
+                        <MenuItem Header="_BAE Systems"></MenuItem>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Help">
                     <MenuItem Header="_Info"/>

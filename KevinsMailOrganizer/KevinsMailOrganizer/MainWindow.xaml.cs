@@ -26,17 +26,20 @@ namespace KevinsMailOrganizer
     {
         ListBox tempList = new ListBox();
         string relativePath = AppDomain.CurrentDomain.BaseDirectory;
-        
-
+        PS_Controller powershellInitiator = new PS_Controller();
+        string srcFolder = "";
+        string dstFolder = "\"C:\\KevinsMailGrej\"";
         //FUNKAR
-        string[] templateArray = Directory.GetFiles(@"..\..\assets\", "*.*", SearchOption.AllDirectories);
-        
-        
+        //string[] templateArray = Directory.GetFiles(@"..\..\assets\", "*.*", SearchOption.AllDirectories);
+        string[] templateArray = Directory.GetFiles(@"C:\KevinsMailGrej", "*.*", SearchOption.AllDirectories);
+
+
 
         List<FileInfo> fileCollection = new List<FileInfo>();
 
         public MainWindow()
         {
+            powershellInitiator.GetFolderStructure(srcFolder, dstFolder);
             InitializeComponent();
             GetTemplate();
             SortTemplates();
@@ -46,12 +49,12 @@ namespace KevinsMailOrganizer
 
         public void GetTemplate()
         {
-                templateArray = Directory.GetFiles(@"..\..\assets\", "*.*", SearchOption.AllDirectories);
+                templateArray = Directory.GetFiles(@"C:\KevinsMailGrej", "*.*", SearchOption.AllDirectories);
         }
 
         public void SortTemplates() {
 
-            TreeViewItem tempTreeViewItem = new TreeViewItem() { Header = "Riksbanken" };
+            TreeViewItem tempTreeViewItem = new TreeViewItem() { Header = "Company" };
             //Används för senare jämförelse
             string tempDirectory = "";
             
@@ -160,6 +163,9 @@ namespace KevinsMailOrganizer
             this.Close();
         }
 
-        
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
