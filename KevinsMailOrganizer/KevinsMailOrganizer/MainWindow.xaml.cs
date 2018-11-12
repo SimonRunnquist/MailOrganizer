@@ -39,7 +39,9 @@ namespace KevinsMailOrganizer
 
         public MainWindow()
         {
-            powershellInitiator.GetFolderStructure(srcFolder, dstFolder);
+            //Funkar att kopiera över filer
+            //powershellInitiator.GetFolderStructure(srcFolder, dstFolder);
+            powershellInitiator.GetFilesFromNetwork(srcFolder);
             InitializeComponent();
             GetTemplate();
             SortTemplates();
@@ -96,6 +98,7 @@ namespace KevinsMailOrganizer
 
             }
 
+            
             tV_template_box.Items.Add(tempTreeViewItem);
 
 

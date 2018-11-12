@@ -18,5 +18,16 @@ namespace KevinsMailOrganizer
                 powerInstance.Invoke();
             }
         }
+
+        public void GetFilesFromNetwork(string srcFolder) {
+            using (PowerShell powerInstance = PowerShell.Create()) {
+                string script = @"Get-ChildItem " + srcFolder + " -File -recurse | % { $_.Fullname, $_.Directory.Name, $_.Name }";
+                powerInstance.AddScript(script);
+                var results = powerInstance.Invoke();
+                foreach (var result in results) {
+                    Console.WriteLine(result);
+                }
+            }
+        }
     }
 }
